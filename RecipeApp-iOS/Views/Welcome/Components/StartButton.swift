@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StartButton: View {
     var body: some View {
-        Button(action: {}) {
+        NavigationLink(destination: HomeView()) {
             Text("Start")
                 .font(.custom("", size: 20))
                 .frame(width: 331, height: 58)

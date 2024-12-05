@@ -11,7 +11,7 @@ import SwiftUI
 struct RecipeApp_iOSApp: App {
     var body: some Scene {
         WindowGroup {
-            WelcomeView()
+            WelcomeView().environmentObject(MealViewModel())
         }
     }
 }

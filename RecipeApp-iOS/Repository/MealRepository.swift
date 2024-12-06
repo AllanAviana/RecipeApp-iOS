@@ -20,4 +20,14 @@ class MealRepository {
             .map { (response: MealResponse) in response.meals }
             .eraseToAnyPublisher()
     }
+    
+    func fetchMeal(with id: String) -> AnyPublisher<[Details], Error> {
+        guard let url = API.getMeal(by: id) else {
+            return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
+        }
+        
+        return networkLayer.fetchData(from: url)
+            .map{(response: DetailsResponse) in response.meals}
+            .eraseToAnyPublisher()
+    }
 }

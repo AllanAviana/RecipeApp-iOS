@@ -11,4 +11,7 @@ struct API {
     static func getMeals(for area: String) -> URL? {
         return URL(string: "\(baseURL)/filter.php?a=\(area)")
     }
+    static func getMeal(by id: String) -> URL? {
+        return URL(string: "\(baseURL)/lookup.php?i=\(id)")
+    }
 }

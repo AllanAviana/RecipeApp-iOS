@@ -32,7 +32,7 @@ struct HorizontalRecipeList: View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHStack(alignment: .top, spacing: 8) {
                 ForEach(recipes, id: \.idMeal) { recipe in
-                    RecipeCard(recipe: recipe)
+                    RecipeCard(recipe: recipe, viewModel: mealViewModel)
                 }
                 .padding(.horizontal, 8)
             }

@@ -16,7 +16,7 @@ struct HomeLoading: View {
 
             VStack(spacing: 40) {
                 MainHeader()
-                Spacer().frame(height: 180)
+                Spacer().frame(height: 120)
                 LoadingIndicator(color: .white, size: .large, speed: .normal)
             }
         }

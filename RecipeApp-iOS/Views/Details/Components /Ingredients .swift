@@ -11,7 +11,7 @@ import SwiftUI
 
 struct Ingredients_: View {
     let viewModel: MealViewModel
-    @State private var visibleIngredients: Set<Int> = [] // Controla os ingredientes visíveis
+    @State private var visibleIngredients: Set<Int> = []
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -35,13 +35,13 @@ struct Ingredients_: View {
                 ForEach(viewModel.detailsUiState.ingredients.indices, id: \.self) { index in
                     if visibleIngredients.contains(index) {
                         IngredientsRow(ingredients: viewModel.detailsUiState.ingredients[index])
-                            .transition(.move(edge: .leading).combined(with: .opacity)) // Animação de entrada
-                            .animation(.easeOut(duration: 0.5).delay(Double(index) * 0.2), value: visibleIngredients) // Animação com atraso
+                            .transition(.move(edge: .leading).combined(with: .opacity)) 
+                            .animation(.easeOut(duration: 0.5).delay(Double(index) * 0.2), value: visibleIngredients)
                     }
                 }.padding(.top, 1)
         }
         .onAppear {
-            // Mostra os ingredientes com atraso
+            
             for index in viewModel.detailsUiState.ingredients.indices {
                 DispatchQueue.main.asyncAfter(deadline: .now() + Double(index) * 0.2) {
                     withAnimation {

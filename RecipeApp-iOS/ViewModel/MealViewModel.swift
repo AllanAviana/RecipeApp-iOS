@@ -55,7 +55,7 @@ class MealViewModel: ObservableObject {
                 
                 self.countries.removeFirst()
                 
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     self.loadMeals()
                 }
             }
@@ -68,7 +68,7 @@ class MealViewModel: ObservableObject {
         detailsUiState.isLoading = true
         print(detailsUiState.isLoading)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.repository.fetchMeal(with: id)
                 .sink(
                     receiveCompletion: { completion in

@@ -9,12 +9,15 @@ import SwiftUI
 
 struct WelcomeImage: View {
     let geometry: GeometryProxy
-    
+   
+
     var body: some View {
         Image("WelcomeImage")
             .resizable()
             .scaledToFill()
-            .frame(height: geometry.size.height * 0.45)
+            .frame(height: geometry.size.height * 0.5)
             .padding(.horizontal)
+           
     }
 }
+

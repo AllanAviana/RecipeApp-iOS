@@ -26,10 +26,10 @@ struct FeatureItem: View {
             if isMultiline {
                 Text(title)
                     .multilineTextAlignment(.center)
-                    .font(.custom("", size: 20))
+                    .font(.custom("HelveticaNeue-Regular", size: 20))
             } else {
                 Text(title)
-                    .font(.custom("", size: 20))
+                    .font(.custom("HelveticaNeue-Regular", size: 20))
             }
         }
     }

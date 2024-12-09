@@ -22,7 +22,7 @@ struct MainHeader: View {
                 .offset(x: 10)
 
             Text("Get ready to know several kinds \nof recipes")
-                .font(.callout)
+                .font(.custom("HelveticaNeue-Black", size: 15))
                 .foregroundColor(.white)
                 .multilineTextAlignment(.center)
                 .offset(y: 120)

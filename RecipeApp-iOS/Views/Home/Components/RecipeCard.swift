@@ -10,6 +10,7 @@ import SwiftUI
 struct RecipeCard: View {
     let recipe: Meal
     let viewModel: MealViewModel
+    @State private var isVisible: Bool = false 
 
     var body: some View {
         NavigationLink(
@@ -40,6 +41,14 @@ struct RecipeCard: View {
                         .offset(y: 5)
                 }
                 .frame(width: 180, height: 200, alignment: .top)
+                .opacity(isVisible ? 1 : 0)
+                .scaleEffect(isVisible ? 1 : 0.5)
+                .onAppear {
+                    isVisible = true
+                    
+                }
+                
+                .animation(.easeInOut(duration: 1), value: isVisible)
             }
             .buttonStyle(PlainButtonStyle())
     }

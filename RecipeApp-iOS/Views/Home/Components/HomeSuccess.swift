@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeSuccess: View {
+    @State private var resetTrigger: Bool = false 
     let mealViewModel: MealViewModel
     private let categories = ["american", "italian", "mexican", "chinese", "japanese"]
 
@@ -23,6 +24,7 @@ struct HomeSuccess: View {
                     LazyVStack(alignment: .leading, spacing: 20) {
                         ForEach(categories, id: \.self) { category in
                             CategorySection(category: category, mealViewModel: mealViewModel)
+                                .id(resetTrigger) // Força recriação do layout
                         }
                     }
                     .padding(.top, 16)
@@ -31,5 +33,12 @@ struct HomeSuccess: View {
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
+        .onAppear {
+            resetScreen()
+        }
+    }
+
+    private func resetScreen() {
+        resetTrigger.toggle()
     }
 }

@@ -8,11 +8,11 @@
 import Foundation
 import Combine
 
-class MealRepository {
+class MealRepository: MealRepositoryProtocol {
     private let networkLayer = NetworkLayer()
     
     func fetchMeals(for area: String) -> AnyPublisher<[Meal], Error> {
-        guard let url = API.getMeals(for: area) else {
+        guard let url = MealAPIUrl.getMeals(for: area) else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
         }
         
@@ -22,7 +22,7 @@ class MealRepository {
     }
     
     func fetchMeal(with id: String) -> AnyPublisher<[Details], Error> {
-        guard let url = API.getMeal(by: id) else {
+        guard let url = MealAPIUrl.getMeal(by: id) else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
         }
         

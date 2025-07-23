@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct API {
+struct MealAPIUrl {
     static let baseURL = "https://www.themealdb.com/api/json/v1/1"
     static func getMeals(for area: String) -> URL? {
         return URL(string: "\(baseURL)/filter.php?a=\(area)")

@@ -184,6 +184,7 @@
 					};
 					B8D29FB82CFFF94C0012DCCA = {
 						CreatedOnToolsVersion = 16.1;
+						LastSwiftMigration = 1610;
 						TestTargetID = B8D29FA82CFFF94A0012DCCA;
 					};
 					B8D29FC22CFFF94C0012DCCA = {
@@ -459,6 +460,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L3JTK2F3SR;
@@ -468,6 +470,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Me.RecipeApp-iOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RecipeApp-iOS.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/RecipeApp-iOS";
@@ -478,6 +481,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = L3JTK2F3SR;

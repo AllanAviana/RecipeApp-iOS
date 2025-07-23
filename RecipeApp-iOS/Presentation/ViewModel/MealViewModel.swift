@@ -12,26 +12,28 @@ class MealViewModel: ObservableObject {
     @Published var meals: [Meal] = []
     @Published var homeUiState: HomeUiState = HomeUiState()
     @Published var detailsUiState: DetailsUiState = DetailsUiState()
-    
+
     private var cancellables = Set<AnyCancellable>()
-    private let repository = MealRepository()
-    
-    init() {
+    private let repository: MealRepositoryProtocol
+
+    init(repository: MealRepositoryProtocol = MealRepository()) {
+        self.repository = repository
         loadMeals()
     }
+
     var countries = ["american", "mexican", "italian", "japanese", "chinese"]
-    
+
     func loadMeals() {
-        
+
         homeUiState.loading = true
         homeUiState.error = nil
-        
+
         guard let country = countries.first else {
             homeUiState.loading = false
             homeUiState.success = true
             return
         }
-        
+
         repository.fetchMeals(for: country)
             .sink { completion in
                 if case let .failure(error) = completion {
@@ -52,22 +54,20 @@ class MealViewModel: ObservableObject {
                 default:
                     print("Unknown country")
                 }
-                
+
                 self.countries.removeFirst()
-                
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                     self.loadMeals()
                 }
             }
             .store(in: &cancellables)
     }
-    
+
     func loadDetails(id: String) {
-        print("Loading details...")
-        
+
         detailsUiState.isLoading = true
-        print(detailsUiState.isLoading)
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.repository.fetchMeal(with: id)
                 .sink(
@@ -84,10 +84,11 @@ class MealViewModel: ObservableObject {
                             print("No meal details found")
                             return
                         }
-                        
+
                         self.detailsUiState.image = mealDetail.strMealThumb
                         self.detailsUiState.name = mealDetail.strMeal
-                        self.detailsUiState.instructions = mealDetail.strInstructions
+                        self.detailsUiState.instructions =
+                            mealDetail.strInstructions
                         self.detailsUiState.ingredients = [
                             mealDetail.strIngredient1,
                             mealDetail.strIngredient2,
@@ -110,15 +111,12 @@ class MealViewModel: ObservableObject {
                             mealDetail.strIngredient19,
                             mealDetail.strIngredient20,
                         ].compactMap { $0 }.filter { !$0.isEmpty }
-                        
+
                         self.detailsUiState.isLoading = false
                         self.detailsUiState.isSuccess = true
-                        print(self.detailsUiState.ingredients)
                     }
                 )
                 .store(in: &self.cancellables)
         }
     }
-
-    
 }

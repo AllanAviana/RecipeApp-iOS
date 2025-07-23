@@ -1,7 +1,19 @@
-# RecipeApp-iOS
+# RecipeApp
 
-**RecipeApp** is a personal project I created to make cooking more accessible and fun. The app features a WelcomeScreen, HomeScreen, and DetailsScreen, each designed with a clean and engaging interface. Using the TheMealDB API, RecipeApp offers a variety of recipes from different cuisines, complete with detailed instructions and ingredient lists. The app is perfect for anyone looking to discover new dishes or improve their cooking skills. Whether you're exploring American pancakes or Italian pasta, RecipeApp makes it easy to find and follow delicious recipes.
+**RecipeApp** is a simple app I built to explore and discover recipes by country. It uses **TheMealDB API** and organizes meals into categories like American, Italian, Mexican, Japanese, and Chinese. You can browse the lists and open a details screen to see ingredients and instructions.
 
+It’s basically a small project to make it easier to find something tasty without overcomplicating things.
+
+## Features
+
+- **Welcome View:**  
+  A friendly intro with a start button and quick hints about the app.
+
+- **Home View:**  
+  Shows several country sections (American, Italian, Mexican, Japanese, Chinese), each listing recipes with images and titles.
+
+- **Details View:**  
+  Displays the selected recipe image, title, instructions and a bullet list of ingredients.
 ---
 
 ## Screenshots
@@ -18,4 +30,11 @@
 - **TheMealDB API**: Provides a comprehensive database of recipes and meal details.
 - **Xcode**: The primary IDE used for development and testing the application.
 
----
+## Getting Started
+
+To run RecipeApp locally:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/AllanAviana/RecipeApp-iOS.git
+
